@@ -1,0 +1,103 @@
+<!-- fullname,username,age,mobilenumber,email,password,connfirmpassword -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</head>
+<body>
+ 
+<div class="container text-center">
+    <div class="row align-items-start">
+      <div class="col">
+ 
+      </div>
+      <div class="col">
+     
+      <form action="registration.php" method="post">
+ 
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Full Name :</label>
+        <input type="text" name="fullname" class="form-control" id="formGroupExampleInput" placeholder="Insert your full name.">
+      </div>
+ 
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">User Name :</label>
+        <input type="text" name= "username" class="form-control" id="formGroupExampleInput2" placeholder="Insert your username.">
+      </div>
+ 
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Age :</label>
+        <input type="number" name = "age" class="form-control" id="formGroupExampleInput" placeholder="Insert your age.">
+      </div>
+ 
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Mobile Number :</label>
+        <input type="text" name = "mobilenumber" class="form-control" id="formGroupExampleInput2" placeholder="Insert your mobile number.">
+      </div>
+ 
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Email :</label>
+        <input type="email" name = "email" class="form-control" id="formGroupExampleInput" placeholder="Insert your email.">
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Password :</label>
+        <input type="password" name="password" class="form-control" id="formGroupExampleInput2" placeholder="Insert your password.">
+      </div>
+ 
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Confirm password</label>
+        <input type="password" name = "confirmpass" class="form-control" id="formGroupExampleInput" placeholder="Confirm your password.">
+      </div>
+      </br>
+      <button type="submit" name ="login" class="btn btn-dark">Submit</button>
+ 
+      </form>
+      </br>
+      <?php
+      $connection = mysqli_connect('localhost', 'root', '', 'registration');
+      if($connection){
+        echo "connected";
+      }
+ 
+      if(isset($_POST['login'])){
+        $fulln = $_POST['fullname'];
+        $usern = $_POST['username'];
+        $age = $_POST['age'];
+        $mobilen = $_POST['mobilenumber'];
+        $email = $_POST['email'];
+        $pass = $_POST['password'];
+        $conpass = $_POST['confirmpass'];
+ 
+        $query = "insert into register(FullName,UserName,Age,MobileNumber,Email,Password,ConfirmPassword) values ('$fulln','$usern','$age','$mobilen','$email','$pass','$conpass')";
+        $check = mysqli_query($connection, $query);
+ 
+        if($check){
+          echo "succesfull";
+        }
+      }
+ 
+      if(isset($_POST["login"])){
+        echo $_POST["fullname"];
+        echo $_POST["username"];
+        echo $_POST["age"];
+        echo $_POST["mobilenumber"];
+        echo $_POST["email"];
+        echo $_POST["password"];
+        echo $_POST["confirmpass"];
+      }
+      ?>
+ 
+      </div>
+      <div class="col">
+     
+      </div>
+ 
+    </div>
+</div>
+ 
+</body>
+</html>
