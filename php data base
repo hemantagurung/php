@@ -78,17 +78,7 @@
         if($check){
           echo "succesfull";
         }
-      }
- 
-      if(isset($_POST["login"])){
-        echo $_POST["fullname"];
-        echo $_POST["username"];
-        echo $_POST["age"];
-        echo $_POST["mobilenumber"];
-        echo $_POST["email"];
-        echo $_POST["password"];
-        echo $_POST["confirmpass"];
-      }
+     
       ?>
  
       </div>
